@@ -53,3 +53,15 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Smooth fade-in for <main id="app"> once assets/js/app.js finishes
+   injecting every page fragment, so content arrives as one deliberate
+   fade instead of an abrupt pop-in the instant the fetches resolve. */
+#app {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#app.is-loaded {
+    opacity: 1;
+}

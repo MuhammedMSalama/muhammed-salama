@@ -46,3 +46,62 @@
     background: var(--color-raised);
     border-color: var(--color-line);
 }
+
+/* ==========================
+   Scroll Progress Bar
+========================== */
+/* Thin fixed bar above the navbar (index.html). Width is driven by a
+   GPU-friendly transform, not the `width` property, so updating it on
+   every scroll tick never triggers layout — see assets/js/scroll.js. */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60;
+    width: 100%;
+    height: 3px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    will-change: transform;
+}
+
+/* ==========================
+   Back to Top (floating)
+========================== */
+/* Floating circular button (index.html), independent of the footer's
+   text "Back to top" link — this one stays reachable without scrolling
+   all the way down. Hidden until assets/js/scroll.js adds .is-visible
+   once the visitor has scrolled past the hero. */
+.back-to-top-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 40;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.back-to-top-float.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* ==========================
+   Focus States
+========================== */
+/* A single, deliberate keyboard-focus style, applied via :focus-visible
+   so it never shows for mouse/touch clicks — only for keyboard/AT
+   navigation. Mirrors the accent color used for hover states throughout
+   the site instead of relying on each browser's inconsistent default
+   outline. */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}

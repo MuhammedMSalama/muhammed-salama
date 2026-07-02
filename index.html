@@ -4,6 +4,69 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Muhammed Salama — Laravel Backend Engineer</title>
+    <meta name="description"
+          content="Muhammed Salama — Backend Engineer specializing in Laravel, PHP, and REST API architecture. 3+ years building production systems for real estate, logistics, and CRM platforms across Egypt, the UAE, and Saudi Arabia. Author of LaravelBase, a published Laravel open-source package."/>
+    <meta name="author" content="Muhammed Salama"/>
+    <meta name="theme-color" content="#0F172A"/>
+
+    <!--
+      Open Graph / Twitter Card: these use relative image paths and no
+      canonical `og:url` because the site has no live domain yet — social
+      platforms require absolute URLs to resolve preview images correctly.
+      Once deployed, replace `assets/images/profile/muhammed-salama.jpg`
+      below with an absolute URL (e.g. https://yourdomain.com/assets/...)
+      and add `<link rel="canonical">` + `og:url` pointing at the real
+      domain, then re-test with a link-preview debugger.
+    -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Muhammed Salama — Laravel Backend Engineer"/>
+    <meta property="og:description"
+          content="Backend Engineer specializing in Laravel, PHP, and REST API architecture. 3+ years building production systems across Egypt, the UAE, and Saudi Arabia. Author of LaravelBase."/>
+    <meta property="og:image" content="assets/images/profile/muhammed-salama.jpg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Muhammed Salama — Laravel Backend Engineer"/>
+    <meta name="twitter:description"
+          content="Backend Engineer specializing in Laravel, PHP, and REST API architecture. Author of LaravelBase, a published Laravel open-source package."/>
+    <meta name="twitter:image" content="assets/images/profile/muhammed-salama.jpg"/>
+
+    <!--
+      Structured data (schema.org Person). `url` is intentionally omitted
+      until the site has a real domain — see the Open Graph note above;
+      an invented URL here would be worse than no URL at all.
+    -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Muhammed Salama",
+            "jobTitle": "Backend Engineer",
+            "description": "Backend Engineer specializing in Laravel, PHP, and REST API architecture.",
+            "sameAs": [
+                "https://www.linkedin.com/in/mohamed2050/",
+                "https://github.com/MuhammedMSalama",
+                "https://packagist.org/packages/muhammedsalama/laravel-base"
+            ],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Al Ula Company (Blue Wide World)"
+            },
+            "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "Menoufia University"
+            },
+            "knowsAbout": [
+                "Laravel",
+                "PHP",
+                "REST API Design",
+                "MySQL",
+                "PostgreSQL",
+                "Redis",
+                "Docker",
+                "Clean Architecture",
+                "Repository Pattern"
+            ]
+        }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -44,6 +107,7 @@
                         card: '0 1px 2px 0 rgb(0 0 0 / 0.4), 0 0 0 1px rgb(255 255 255 / 0.03)',
                         lift: '0 20px 40px -12px rgb(0 0 0 / 0.55)',
                         glow: '0 0 0 1px rgb(34 197 94 / 0.35), 0 0 40px -8px rgb(34 197 94 / 0.35)',
+                        'glow-blue': '0 0 0 1px rgb(59 130 246 / 0.35), 0 0 40px -8px rgb(59 130 246 / 0.35)',
                     },
                 },
             },
@@ -61,6 +125,9 @@
 </head>
 
 <body class="bg-base text-slate-200 font-sans antialiased selection:bg-accent/30 selection:text-white">
+
+<!-- Fixed scroll-position indicator, purely visual — see assets/js/scroll.js. -->
+<div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
 
 <!--
   This project loads pages/*.html into <main id="app"> at runtime — see
@@ -87,6 +154,7 @@
             <a href="#highlights" class="nav-link hover:text-white transition-colors">Highlights</a>
             <a href="#stack" class="nav-link hover:text-white transition-colors">Expertise</a>
             <a href="#projects" class="nav-link hover:text-white transition-colors">Projects</a>
+            <a href="#opensource" class="nav-link hover:text-white transition-colors">Open Source</a>
             <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
         </div>
 
@@ -117,6 +185,7 @@
             <a href="#highlights" class="hover:text-white transition-colors">Highlights</a>
             <a href="#stack" class="hover:text-white transition-colors">Expertise</a>
             <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+            <a href="#opensource" class="hover:text-white transition-colors">Open Source</a>
             <a href="#contact" class="hover:text-white transition-colors">Contact</a>
             <a href="#contact" class="mt-2 text-center rounded-lg bg-accent text-slate-950 font-semibold px-4 py-3">Let's
                 Talk</a>
@@ -128,6 +197,17 @@
      Empty on load; assets/js/app.js fetches every fragment in /pages
      and injects them here, in order, via assets/js/components.js. -->
 <main id="app"></main>
+
+<!-- Floating "back to top" — independent of the footer's text link, stays
+     reachable without scrolling all the way down. Hidden until scrolled. -->
+<button id="backToTopFloat"
+        class="back-to-top-float h-11 w-11 rounded-full border border-line bg-surface/90 backdrop-blur flex items-center justify-center text-muted hover:text-white hover:border-white/30 hover:shadow-lift"
+        aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+         stroke-linecap="round">
+        <use href="assets/icons/sprite.svg#icon-chevron-up"></use>
+    </svg>
+</button>
 
 <script type="module" src="assets/js/app.js"></script>
 

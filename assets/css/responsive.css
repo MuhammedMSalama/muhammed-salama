@@ -27,4 +27,12 @@
     .animate-pulse-dot {
         animation: none;
     }
+
+    .back-to-top-float {
+        transition: none;
+    }
+
+    #app {
+        transition: none;
+    }
 }

@@ -1,12 +1,15 @@
 /**
  * scroll.js
- * Scroll-position-driven UI: the navbar's background/blur state, and
- * the footer's "back to top" button.
+ * Scroll-position-driven UI: the navbar's background/blur state, the
+ * fixed scroll-progress bar, and the "back to top" affordances (the
+ * footer's text link and the floating button share one handler).
  *
- * initNavbarScroll() can run immediately — the navbar is static markup
- * in index.html. initBackToTop() targets #toTop, which lives inside
- * pages/footer.html, so it must be called only after that fragment has
- * been injected (app.js handles the ordering).
+ * initNavbarScroll() and initScrollProgress() can run immediately — the
+ * navbar and the progress bar/floating button are static markup in
+ * index.html. initBackToTop() targets a button by id; when that id
+ * lives inside a loaded fragment (pages/footer.html's #toTop), the call
+ * must happen after that fragment has been injected (app.js handles
+ * the ordering).
  */
 
 /**
@@ -32,14 +35,58 @@ export function initNavbarScroll() {
 }
 
 /**
- * Wires up the footer's "back to top" button to smooth-scroll the page.
+ * Drives the fixed top progress bar and the floating back-to-top
+ * button's visibility from a single rAF-throttled scroll handler, so
+ * both update together without doing more than one style write per
+ * animation frame — avoids layout thrashing under fast/trackpad scroll.
  * @returns {void}
  */
-export function initBackToTop() {
-    const toTopBtn = document.getElementById('toTop');
-    if (!toTopBtn) return;
+export function initScrollProgress() {
+    const progressBar = document.getElementById('scrollProgress');
+    const floatBtn = document.getElementById('backToTopFloat');
+    if (!progressBar && !floatBtn) return;
 
-    toTopBtn.addEventListener('click', () => {
+    let ticking = false;
+
+    const update = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+
+        if (progressBar) {
+            progressBar.style.transform = `scaleX(${progress})`;
+        }
+        if (floatBtn) {
+            floatBtn.classList.toggle('is-visible', scrollTop > window.innerHeight * 0.6);
+        }
+        ticking = false;
+    };
+
+    window.addEventListener(
+        'scroll',
+        () => {
+            if (!ticking) {
+                requestAnimationFrame(update);
+                ticking = true;
+            }
+        },
+        {passive: true}
+    );
+    update(); // apply the correct state immediately (e.g. on reload mid-scroll)
+}
+
+/**
+ * Wires up a "back to top" button (by id) to smooth-scroll the page.
+ * Reused for both the footer's text link (#toTop) and the floating
+ * button (#backToTopFloat) — one handler, no duplicated logic.
+ * @param {string} buttonId
+ * @returns {void}
+ */
+export function initBackToTop(buttonId) {
+    const button = document.getElementById(buttonId);
+    if (!button) return;
+
+    button.addEventListener('click', () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
     });
 }

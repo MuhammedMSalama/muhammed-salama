@@ -18,6 +18,7 @@ export const COMPONENTS = [
     'pages/highlights.html',
     'pages/skills.html',
     'pages/projects.html',
+    'pages/opensource.html',
     'pages/contact.html',
     'pages/footer.html',
 ];
