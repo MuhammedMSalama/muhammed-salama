@@ -1,0 +1,48 @@
+/* ==============================================================
+   components.css
+   Small, named UI components that Tailwind's utility classes can't
+   express on their own: the nav-link hover underline, the background
+   patterns used behind the hero and project image placeholders, and
+   an optional tab-filter state kept for parity with earlier markup.
+============================================================== */
+
+/* Animated underline for desktop nav links on hover (index.html navbar). */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: var(--color-accent);
+    transition: width 0.25s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Subtle background patterns, reused across pages/hero.html and
+   pages/projects.html image placeholders. */
+.grid-pattern {
+    background-image: linear-gradient(to right, var(--pattern-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pattern-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.dot-pattern {
+    background-image: radial-gradient(var(--pattern-dot) 1px, transparent 1px);
+    background-size: 18px 18px;
+}
+
+/* Optional category-filter tab state (not currently wired into any
+   page fragment's markup), kept for parity with earlier stylesheet. */
+.tab-btn.active {
+    color: var(--color-white);
+    background: var(--color-raised);
+    border-color: var(--color-line);
+}

@@ -1,0 +1,55 @@
+/* ==============================================================
+   variables.css
+   Design tokens: color, typography, spacing, radius, shadow, motion.
+   Loaded first — every other stylesheet in this project depends on
+   these custom properties being defined before it runs.
+============================================================== */
+
+:root {
+    /* Colors — mirrors the palette registered in tailwind.config (index.html) */
+    --color-base: #0f172a;
+    --color-surface: #1b2436;
+    --color-raised: #232e44;
+    --color-line: #263349;
+    --color-line-hover: #324160;
+    --color-accent: #22c55e;
+    --color-blue: #3b82f6;
+    --color-amber: #f59e0b;
+    --color-muted: #94a3b8;
+    --color-subtle: #64748b;
+    --color-white: #f8fafc;
+
+    /* Background pattern overlays (grid-pattern / dot-pattern) */
+    --pattern-line: rgb(255 255 255 / 0.035);
+    --pattern-dot: rgb(255 255 255 / 0.08);
+
+    /* Typography — mirrors fontFamily tokens registered in tailwind.config */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Spacing scale (8px base grid, matches the spacing used across the page fragments) */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-12: 48px;
+    --space-16: 64px;
+
+    /* Border radius */
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 28px;
+    --radius-full: 999px;
+
+    /* Shadows — mirrors boxShadow tokens registered in tailwind.config */
+    --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.4), 0 0 0 1px rgb(255 255 255 / 0.03);
+    --shadow-lift: 0 20px 40px -12px rgb(0 0 0 / 0.55);
+    --shadow-glow: 0 0 0 1px rgb(34 197 94 / 0.35), 0 0 40px -8px rgb(34 197 94 / 0.35);
+
+    /* Motion */
+    --ease-reveal: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+    --duration-reveal: 0.7s;
+}

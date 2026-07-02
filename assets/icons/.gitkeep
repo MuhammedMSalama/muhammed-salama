@@ -1,4 +1,0 @@
-This folder is reserved for standalone icon assets (favicon, apple-touch-icon,
-an SVG sprite, etc.). The current build inlines all UI/brand icons directly as
-<svg> markup in index.html to avoid extra HTTP requests, so nothing lives here
-yet -- this file just keeps the empty directory tracked in git.
