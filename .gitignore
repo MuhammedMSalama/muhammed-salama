@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+
+# Node (in case tooling, e.g. a Tailwind build step, is added later)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Local env files
+.env
+.env.local
+
+# Misc
+*.log
+dist/
+build/

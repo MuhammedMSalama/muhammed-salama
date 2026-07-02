@@ -1,0 +1,4 @@
+This folder is reserved for self-hosted font files. The current build loads
+Inter and JetBrains Mono from Google Fonts (see the <link> tags in
+index.html <head>), so nothing lives here yet -- this file just keeps the
+empty directory tracked in git.

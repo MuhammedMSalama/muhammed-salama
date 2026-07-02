@@ -9,6 +9,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
+<!--
+  Tailwind CDN + its runtime config are intentionally kept inline here
+  rather than moved to assets/js/main.js. Tailwind's Play CDN script
+  needs `tailwind.config` set synchronously, in document order, before
+  it scans the page for utility classes — moving it to an external,
+  separately-loaded file risks the utility classes (colors, shadows,
+  fonts used throughout this page) silently failing to generate, which
+  would break the design. All other/custom JavaScript lives in
+  assets/js/main.js. See README.md for more on this trade-off.
+-->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -39,50 +49,8 @@
   };
 </script>
 
-<style>
-  html { scroll-behavior: smooth; }
-  body { background-color: #0F172A; }
-  ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #0F172A; }
-  ::-webkit-scrollbar-thumb { background: #263349; border-radius: 999px; }
-  ::-webkit-scrollbar-thumb:hover { background: #324160; }
-
-  .grid-pattern {
-    background-image:
-      linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-  .dot-pattern {
-    background-image: radial-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1px);
-    background-size: 18px 18px;
-  }
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.21,.47,.32,.98), transform .7s cubic-bezier(.21,.47,.32,.98); }
-  .reveal.in-view { opacity: 1; transform: translateY(0); }
-
-  @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  .animate-float { animation: floatY 5s ease-in-out infinite; }
-  .animate-float-slow { animation: floatY 7s ease-in-out infinite; }
-
-  @keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
-  .animate-pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
-
-  .text-gradient {
-    background: linear-gradient(90deg, #F8FAFC 0%, #94A3B8 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .nav-link { position: relative; }
-  .nav-link::after {
-    content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px;
-    background: #22C55E; transition: width .25s ease;
-  }
-  .nav-link:hover::after { width: 100%; }
-
-  .tab-btn.active { color: #F8FAFC; background: #232E44; border-color: #263349; }
-</style>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/responsive.css" />
 </head>
 
 <body class="bg-base text-slate-200 font-sans antialiased selection:bg-accent/30 selection:text-white">
@@ -741,38 +709,7 @@
   </div>
 </footer>
 
-<script>
-  // Sticky nav background on scroll
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 24) {
-      navbar.classList.add('bg-base/80', 'backdrop-blur-lg', 'border-line/70');
-    } else {
-      navbar.classList.remove('bg-base/80', 'backdrop-blur-lg', 'border-line/70');
-    }
-  });
-
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-
-  // Back to top
-  document.getElementById('toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-  revealEls.forEach(el => io.observe(el));
-</script>
+<script src="assets/js/main.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,4 @@
+This folder is reserved for raster/vector project imagery (screenshots, avatar
+photo, etc.). The current build uses CSS-drawn placeholders instead of image
+files, so nothing lives here yet -- this file just keeps the empty directory
+tracked in git.
